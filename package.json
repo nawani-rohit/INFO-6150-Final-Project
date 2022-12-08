@@ -1,0 +1,19 @@
+{
+  "name": "info-6150-final-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nawani-rohit/INFO-6150-Final-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nawani-rohit/INFO-6150-Final-Project/issues"
+  },
+  "homepage": "https://github.com/nawani-rohit/INFO-6150-Final-Project#readme"
+}
