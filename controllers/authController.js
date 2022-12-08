@@ -139,3 +139,47 @@ const activateAccount = asynHandler(async (req, res) => {
   //   res.status(401)
   //   throw new Error('User already exists with that email')
   // }
+
+   // save user
+   const user = new AuthModel({
+    fullname,
+    phoneno,
+    email,
+    password,
+  })
+
+  await user.save()
+
+  if (!user) {
+    throw new Error('Something went wrong')
+  }
+
+  // generate new token
+  const newToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
+    expiresIn: '1d',
+  })
+
+  res
+    .status(201)
+    .json({ successMsg: 'Registered Successfully!', token: newToken })
+})
+
+// SIGNIN
+const signin = asynHandler(async (req, res) => {
+  const { email, password, password2 } = req.body
+
+  if (!email || !password || !password2) {
+    res.status(400)
+    throw new Error('Please include all fields')
+  }
+
+  // check both passwords
+  if (password !== password2) {
+    res.status(400)
+    throw new Error('Passwords do not match')
+  }
+  // check passwords length
+  if (password.length < 8 || password2.length < 8) {
+    res.status(400)
+    throw new Error('Minimum length should be 8 characters')
+  }
