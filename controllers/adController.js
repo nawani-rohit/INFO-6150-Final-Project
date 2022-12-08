@@ -102,3 +102,91 @@ const getAds = asyncHandler(async (req, res) => {
   
     res.json(user)
   })
+
+  // DELETE INDIVIDUAL AD
+const deleteAd = asyncHandler(async (req, res) => {
+    const authUser = req.user
+  
+    const id = req.params.id
+  
+    // check if user is authorized to delete this ad
+    const ad = await AdModel.findOne({ _id: id }).select('user')
+  
+    if (ad.user._id.toString() !== authUser.id) {
+      res.status(401)
+      throw new Error('Not authorized! cant delete this ad')
+    }
+  
+    // delete
+    const deletedAd = await AdModel.findByIdAndRemove(id)
+  
+    if (!deletedAd) {
+      res.status(404)
+      throw new Error('No item found! Cannot delete this item')
+    }
+  
+    res.json({ successMsg: 'Ad deleted', id: deletedAd._id })
+  })
+  
+  // UPDATE INDIVIDUAL AD
+  const updateAd = asyncHandler(async (req, res) => {
+    const authUser = req.user
+  
+    const id = req.params.id
+  
+    const {
+      title,
+      description,
+      brand,
+      condition,
+      images,
+      location,
+      price,
+      category,
+    } = req.body
+  
+    // check if user is authorized to delete this ad
+    const ad = await AdModel.findOne({ _id: id }).select('user')
+    if (ad.user._id.toString() !== authUser.id) {
+      res.status(401)
+      throw new Error('Not authorized! cant update this ad')
+    }
+  
+    // update
+    const updatedAd = await AdModel.findByIdAndUpdate(
+      id,
+      {
+        title,
+        description,
+        brand,
+        condition,
+        images,
+        location,
+        price,
+        category,
+      },
+      { new: true }
+    )
+  
+    if (!updatedAd) {
+      throw new Error('Something went wrong')
+    }
+  
+    res.json({ successMsg: 'Ad updated successfully', ad: updatedAd })
+  })
+  
+  // my ads
+  const myads = asyncHandler(async (req, res) => {
+    const user = req.user
+    const ads = await AdModel.find({ user: user.id }).select(
+      'title price images createdAt'
+    )
+  
+    if (!ads) {
+      throw new Error('Something went wrong')
+    }
+  
+    res.json(ads)
+  })
+  
+  module.exports = { postAd, getAds, updateAd, getAd, deleteAd, itemUser, myads }
