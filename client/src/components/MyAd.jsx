@@ -21,6 +21,22 @@ const MyAd = ({ ad }) => {
     Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))
   );
 
+  const date = moment(createdAt).format("ll");
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleEditBtnClick = () => {
+    navigate(`/update/item/${id}`, { state: id });
+  };
+
   return (
     <Card style={{ cursor: "pointer" }}>
       <div
