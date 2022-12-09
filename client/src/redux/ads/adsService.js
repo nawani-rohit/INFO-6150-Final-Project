@@ -36,3 +36,66 @@ const getItemUser = async (userId) => {
 
   return user.data
 }
+
+// MY ADS
+const myads = async () => {
+    const token = JSON.parse(localStorage.getItem('token'))
+  
+    const header = {
+      Authorization: `Bearer ${token}`,
+    }
+  
+    const user = await axios({
+      method: 'get',
+      url: `${url}/myads`,
+      headers: header,
+    })
+  
+    return user.data
+  }
+  // DELETE AD
+  const deleteAd = async (id) => {
+    const token = JSON.parse(localStorage.getItem('token'))
+  
+    const header = {
+      Authorization: `Bearer ${token}`,
+    }
+  
+    const user = await axios({
+      method: 'delete',
+      url: `${url}/item/delete/${id}`,
+      headers: header,
+    })
+  
+    return user.data
+  }
+  // UPDATE AD
+  const updateAd = async ({ id, ad }) => {
+    console.log(ad)
+    const token = JSON.parse(localStorage.getItem('token'))
+  
+    const header = {
+      Authorization: `Bearer ${token}`,
+    }
+  
+    const user = await axios({
+      method: 'put',
+      url: `${url}/item/update/${id}`,
+      data: ad,
+      headers: header,
+    })
+  
+    return user.data
+  }
+  
+  const adsService = {
+    postAd,
+    getAds,
+    getItemUser,
+    myads,
+    deleteAd,
+    updateAd,
+  }
+  
+  export default adsService
+  
