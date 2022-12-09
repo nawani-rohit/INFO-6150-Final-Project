@@ -41,7 +41,7 @@ export function FileUpload({ allValues, setAllValues }) {
               type="button"
             >
               <img
-                src="https://www.olx.com.pk/assets/iconAddPhoto_noinline.8924e2486f689a28af51da37a7bda6ec.svg"
+                src={require('../images/icons8-add-image-24.png')}
                 alt="img"
               />
             </button>
