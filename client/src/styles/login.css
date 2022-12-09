@@ -46,22 +46,30 @@ textarea {
   margin: auto !important;
 }
 
-@media (max-width: 991px){
-  
-  .contactform{
-    width: 100%!important;
+.lottieConatiner {
+  width: 500px;
+}
+
+@media (max-width: 991px) {
+  .contactform {
+    width: 100% !important;
   }
 }
 
-@media (max-width: 768px){
-
-  .contactform{
-    width: 100%!important;
+@media (max-width: 768px) {
+  .contactform {
+    width: 100% !important;
   }
 }
 
-@media (max-width: 480px){
-  .contactform{
-    width: 100%!important;
+@media (max-width: 480px) {
+  .contactform {
+    width: 100% !important;
+  }
+  .lottieConatiner {
+    display: block;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
