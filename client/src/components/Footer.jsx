@@ -8,7 +8,7 @@ const Footer = () => {
         <Row>
           <Col md={6} xs={12}>
             <div className="footer_logo_container">
-              <h4 className="footer_logo">LOGO HERE</h4>
+            <img height="30"  src={require('../images/Logos/nu-moves-high-resolution-logo-transparent-background.png')} />
               <p className="footer_description">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry.
