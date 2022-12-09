@@ -1,99 +1,99 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Button, Container, Form, Row } from 'react-bootstrap'
-import '../styles/contact.css'
-import ContactInput from '../components/ContactInput'
-import { FileUpload } from '../components/FileUpload'
-import { postAd } from '../redux/ads/adsSlice'
-import toast from 'react-hot-toast'
-import { ThreeDots } from 'react-loader-spinner'
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Button, Container, Form, Row } from "react-bootstrap";
+import "../styles/contact.css";
+import ContactInput from "../components/ContactInput";
+import { FileUpload } from "../components/FileUpload";
+import { postAd } from "../redux/ads/adsSlice";
+import toast from "react-hot-toast";
+import { ThreeDots } from "react-loader-spinner";
+import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 
 const PostAd = () => {
-  const [value, setValue] = useState(null)
+  const [value, setValue] = useState(null);
   const [allValues, setAllValues] = useState({
-    title: '',
-    description: '',
-    brand: '',
-    condition: 'New',
-    category: 'Mobile Phones',
+    title: "",
+    description: "",
+    brand: "",
+    condition: "New",
+    category: "Mobile Phones",
     price: null,
     images: [],
-  })
+  });
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { errorMessage, successMessage, isError, isSuccess, isLoading } =
-    useSelector((selector) => selector.ads)
+    useSelector((selector) => selector.ads);
 
   useEffect(() => {
     if (isError && errorMessage) {
-      toast.error(errorMessage)
+      toast.error(errorMessage);
     }
 
     if (isSuccess && successMessage) {
-      toast.success(successMessage)
+      toast.success(successMessage);
     }
-  }, [isError, isSuccess, errorMessage, successMessage, dispatch])
+  }, [isError, isSuccess, errorMessage, successMessage, dispatch]);
 
   const handleChange = (e) => {
-    setAllValues({ ...allValues, [e.target.name]: e.target.value })
-  }
+    setAllValues({ ...allValues, [e.target.name]: e.target.value });
+  };
   const dropDownChange = (e) => {
-    setAllValues({ ...allValues, condition: e.target.value })
-  }
+    setAllValues({ ...allValues, condition: e.target.value });
+  };
   const categoryDropdownChange = (e) => {
-    setAllValues({ ...allValues, category: e.target.value })
-  }
+    setAllValues({ ...allValues, category: e.target.value });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const formData = new FormData()
+    const formData = new FormData();
 
     for (let i = 0; i < allValues.images.length; i++) {
-      formData.append('images', allValues.images[i].file)
+      formData.append("images", allValues.images[i].file);
     }
 
     if (!value) {
-      toast.error('Location cannot be empty')
-      return
+      toast.error("Location cannot be empty");
+      return;
     }
 
-    formData.append('title', allValues.title)
-    formData.append('brand', allValues.brand)
-    formData.append('category', allValues.category)
-    formData.append('condition', allValues.condition)
-    formData.append('description', allValues.description)
-    formData.append('location', value.label)
-    formData.append('price', allValues.price)
+    formData.append("title", allValues.title);
+    formData.append("brand", allValues.brand);
+    formData.append("category", allValues.category);
+    formData.append("condition", allValues.condition);
+    formData.append("description", allValues.description);
+    formData.append("location", value.label);
+    formData.append("price", allValues.price);
 
-    dispatch(postAd(formData))
+    dispatch(postAd(formData));
 
     setAllValues({
-      title: '',
-      description: '',
-      brand: '',
-      condition: '',
-      category: 'Mobile Phones',
+      title: "",
+      description: "",
+      brand: "",
+      condition: "",
+      category: "Mobile Phones",
       price: null,
       images: [],
-      location: '',
-    })
-  }
+      location: "",
+    });
+  };
 
   if (isLoading) {
     return (
       <div
         style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <ThreeDots color="#3a77ff" height={100} width={100} />
       </div>
-    )
+    );
   }
 
   return (
@@ -101,10 +101,10 @@ const PostAd = () => {
       <div className="cliped_bg"></div>
       <Container>
         <div className="contact_us_container">
-          <h3 className="heading" style={{ color: '#fff' }}>
+          <h3 className="heading" style={{ color: "#fff" }}>
             POST YOUR AD
           </h3>
-          <p className="description" style={{ color: '#fff' }}>
+          <p className="description" style={{ color: "#fff" }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse unde
             amet nihil debitis ea corrupti exercitationem libero! Nam, inventore
             illo!
@@ -186,7 +186,7 @@ const PostAd = () => {
                     onChange: setValue,
                   }}
                   autocompletionRequest={{
-                    componentRestrictions: { country: ['pk'] },
+                    componentRestrictions: { country: ["us"] },
                   }}
                 />
               </div>
@@ -199,7 +199,7 @@ const PostAd = () => {
             </p>
 
             <div>
-              <Button style={{ background: '#333333' }} type="submit">
+              <Button style={{ background: "#333333" }} type="submit">
                 Post Now
               </Button>
             </div>
@@ -207,7 +207,7 @@ const PostAd = () => {
         </div>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default PostAd
+export default PostAd;

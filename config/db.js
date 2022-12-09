@@ -1,6 +1,6 @@
-const { default: mongoose } = require('mongoose')
-require('../models/adModel')
-require('../models/authModel')
+const { default: mongoose } = require("mongoose");
+require("../models/adModel");
+require("../models/authModel");
 
 const connection = async () => {
   try {
@@ -9,7 +9,7 @@ const connection = async () => {
     // })
 
     const connection = await mongoose.connect(
-      "mongodb://localhost:27017/finalproject",
+      "mongodb://127.0.0.1:27017/finalproject",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -24,12 +24,12 @@ const connection = async () => {
     );
 
     if (connection) {
-      console.log('db connected')
+      console.log("db connected");
     }
   } catch (e) {
     // console.log("backend issue");
-    console.log(e)
+    console.log(e);
   }
-}
+};
 
-module.exports = connection
+module.exports = connection;

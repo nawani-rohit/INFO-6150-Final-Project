@@ -1,66 +1,69 @@
-import { useState, useEffect } from 'react'
-import Container from 'react-bootstrap/Container'
-import Form from 'react-bootstrap/Form'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
-import toast from 'react-hot-toast'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { filterAds, searchFilter } from '../redux/ads/adsSlice'
-import { resetUser } from '../redux/auth/authSlice'
+import { useState, useEffect } from "react";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import GooglePlacesAutocomplete from "react-google-places-autocomplete";
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { filterAds, searchFilter } from "../redux/ads/adsSlice";
+import { resetUser } from "../redux/auth/authSlice";
 
-import profile from '../images/profile.png'
+import profile from "../images/profile.png";
 
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-import { Avatar } from '@mui/material'
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { Avatar } from "@mui/material";
 
 function Header() {
-  const [value, setValue] = useState(null)
-  const [input, setInput] = useState(null)
-  const [anchorEl, setAnchorEl] = useState(null)
-  const open = Boolean(anchorEl)
+  const [value, setValue] = useState(null);
+  const [input, setInput] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const location = useLocation()
-  const { user } = useSelector((select) => select.auth)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { user } = useSelector((select) => select.auth);
 
   useEffect(() => {
     if (value || value !== null) {
-      dispatch(filterAds(value.label))
+      dispatch(filterAds(value.label));
     }
-  }, [dispatch, value])
+  }, [dispatch, value]);
 
   useEffect(() => {
-    dispatch(searchFilter(input))
-  }, [dispatch, input])
+    dispatch(searchFilter(input));
+  }, [dispatch, input]);
 
   const logout = () => {
-    localStorage.clear()
-    dispatch(resetUser())
-    navigate('/')
-  }
+    localStorage.clear();
+    dispatch(resetUser());
+    navigate("/");
+  };
 
   const handleSellBtnClick = () => {
     if (!user) {
-      toast.error('To post Ad, Please login')
+      toast.error("To post Ad, Please login");
     }
-  }
+  };
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   return (
-    <Navbar bg="light" expand="lg" style={{ MinHeight: '80px' }}>
+    <Navbar bg="light" expand="lg" style={{ MinHeight: "80px" }}>
       <Container>
         <NavLink to="/" className="navbar-brand">
-        <img height="30"  src={require('../images/Logos/nu-moves-high-resolution-logo-transparent-background.png')} />
+          <img
+            height="30"
+            src={require("../images/Logos/nu-moves-high-resolution-logo-transparent-background.png")}
+          />
           {/* <svg
             height="40"
             viewBox="0 0 36.289 20.768"
@@ -73,14 +76,14 @@ function Header() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Form className="d-flex" style={{ flex: 1 }}>
-            <div style={{ width: '50%' }}>
+            <div style={{ width: "50%" }}>
               <GooglePlacesAutocomplete
                 selectProps={{
                   value,
                   onChange: setValue,
                 }}
                 autocompletionRequest={{
-                  componentRestrictions: { country: ['pk'] },
+                  componentRestrictions: { country: ["us"] },
                 }}
               />
             </div>
@@ -95,7 +98,7 @@ function Header() {
           </Form>
           <Nav
             className="ms-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
+            style={{ maxHeight: "100px" }}
             navbarScroll
           >
             {!user && (
@@ -110,12 +113,12 @@ function Header() {
             )}
 
             {user && (
-              <div style={{ marginLeft: '1rem' }}>
+              <div style={{ marginLeft: "1rem" }}>
                 <Avatar
                   alt="Remy Sharp"
                   src={user.picture ? user.picture : profile}
                   onClick={handleClick}
-                  style={{ background: 'none', cursor: 'pointer' }}
+                  style={{ background: "none", cursor: "pointer" }}
                 />
 
                 <Menu
@@ -124,14 +127,14 @@ function Header() {
                   open={open}
                   onClose={handleClose}
                   MenuListProps={{
-                    'aria-labelledby': 'basic-button',
+                    "aria-labelledby": "basic-button",
                   }}
                   sx={{
-                    '.MuiPaper-root': {
-                      width: '20%',
-                      padding: '1rem',
-                      left: 'auto !important',
-                      right: '150px',
+                    ".MuiPaper-root": {
+                      width: "20%",
+                      padding: "1rem",
+                      left: "auto !important",
+                      right: "150px",
                     },
                   }}
                 >
@@ -141,15 +144,15 @@ function Header() {
                       width={50}
                       height={50}
                       alt="profile"
-                      style={{ borderRadius: '50%' }}
+                      style={{ borderRadius: "50%" }}
                     />
 
                     <div className="d-flex flex-column ps-2">
                       <span>Hello</span>
-                      <span style={{ fontWeight: 'bold' }}>
+                      <span style={{ fontWeight: "bold" }}>
                         {user.fullname}
                       </span>
-                      <Link to="/" style={{ color: 'black' }}>
+                      <Link to="/" style={{ color: "black" }}>
                         view and edit profile
                       </Link>
                     </div>
@@ -159,9 +162,9 @@ function Header() {
                     to="/myads"
                     className="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
                     style={{
-                      color: '#333',
-                      padding: '6px 16px',
-                      textDecoration: 'none',
+                      color: "#333",
+                      padding: "6px 16px",
+                      textDecoration: "none",
                     }}
                   >
                     My Ads
@@ -184,7 +187,7 @@ function Header() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  )
+  );
 }
 
-export default Header
+export default Header;
