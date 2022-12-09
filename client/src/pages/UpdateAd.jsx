@@ -161,14 +161,16 @@ const UpdateAd = () => {
                 <p className="input_label">Categories</p>
 
                 <Form.Select onChange={categoryDropdownChange}>
-                  <option value="Mobile Phones">Mobile Phones</option>
-                  <option value="Cars">Cars</option>
-                  <option value="Motorcycles">Motorcycles</option>
-                  <option value="Houses">Houses</option>
-                  <option value="TV - Video - Audio">TV - Video - Audio</option>
-                  <option value="Tablets Land">Tablets</option>
-                  <option value="Tablets Land">Laptops</option>
-                  <option value="Plots">Land & Plots</option>
+                  <option value="Mobile Phones">Appliances</option>
+                  <option value="Cars">Furniture</option>
+                  <option value="Motorcycles">Cooking Utensils</option>
+                  <option value="Houses">Cleaning Supplies</option>
+                  <option value="TV">Electronic Equipments</option>
+                  <option value="Video - Audio">Crockery</option>
+                  <option value="Tablets">Furnishing</option>
+                  <option value="Laptops">Kitchenware</option>
+                  <option value="Land & Plots">Cleaning Equipments</option>
+                  <option value="Others">Others</option>
                 </Form.Select>
               </div>
 
