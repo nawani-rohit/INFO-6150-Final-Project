@@ -45,3 +45,23 @@ textarea {
 .googleBtn div {
   margin: auto !important;
 }
+
+@media (max-width: 991px){
+  
+  .contactform{
+    width: 100%!important;
+  }
+}
+
+@media (max-width: 768px){
+
+  .contactform{
+    width: 100%!important;
+  }
+}
+
+@media (max-width: 480px){
+  .contactform{
+    width: 100%!important;
+  }
+}

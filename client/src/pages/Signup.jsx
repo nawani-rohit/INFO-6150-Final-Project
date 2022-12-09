@@ -1,61 +1,62 @@
-import React, { useEffect } from "react";
-import { Button, Container } from "react-bootstrap";
-import "../styles/login.css";
-import GoogleLogin from "../components/GoogleLogin";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { register, reset } from "../redux/auth/authSlice";
-import toast from "react-hot-toast";
-import { ThreeDots } from "react-loader-spinner";
+import React, { useEffect } from 'react'
+import { Button, Container } from 'react-bootstrap'
+import '../styles/login.css'
+import GoogleLogin from '../components/GoogleLogin'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { register, reset } from '../redux/auth/authSlice'
+import toast from 'react-hot-toast'
+import { ThreeDots } from 'react-loader-spinner'
 
 const Login = () => {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [password2, setPassword2] = useState('')
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const { errorMessage, successMessage, isError, isSuccess, isLoading } =
-    useSelector((selector) => selector.auth);
+    useSelector((selector) => selector.auth)
 
   useEffect(() => {
     if (isError) {
-      toast.error(errorMessage);
+      toast.error(errorMessage)
     }
 
     if (isSuccess) {
-      toast.success(successMessage);
+      toast.success(successMessage)
     }
 
-    return () => dispatch(reset());
-  }, [isError, isSuccess, errorMessage, successMessage, dispatch]);
+    return () => dispatch(reset())
+  }, [isError, isSuccess, errorMessage, successMessage, dispatch])
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const data = {
       fullname: name,
       phoneno: phone,
       email,
       password,
       password2,
-    };
-    dispatch(register(data));
-  };
+    }
+    console.log(data);
+    dispatch(register(data))
+  }
 
   if (isLoading) {
     return (
       <div
         style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         <ThreeDots color="#3a77ff" height={100} width={100} />
       </div>
-    );
+    )
   }
 
   return (
@@ -64,7 +65,7 @@ const Login = () => {
         <form
           className="contactform"
           onSubmit={handleSubmit}
-          style={{ width: "50%", margin: "auto" }}
+          style={{ width: '50%', margin: 'auto' }}
         >
           <h1 className="text-center">SIGN UP</h1>
 
@@ -129,13 +130,13 @@ const Login = () => {
             </div>
           </div>
 
-          <Button style={{ background: "#333", width: "100%" }} type="submit">
+          <Button style={{ background: '#333', width: '100%' }} type="submit">
             Sign In
           </Button>
         </form>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

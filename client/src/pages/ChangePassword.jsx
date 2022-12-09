@@ -1,60 +1,60 @@
-import React, { useEffect, useState } from "react";
-import { Button, Container } from "react-bootstrap";
-import toast from "react-hot-toast";
-import { ThreeDots } from "react-loader-spinner";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { changePassword, reset } from "../redux/auth/authSlice";
-import "../styles/login.css";
+import React, { useEffect, useState } from 'react'
+import { Button, Container } from 'react-bootstrap'
+import toast from 'react-hot-toast'
+import { ThreeDots } from 'react-loader-spinner'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { changePassword, reset } from '../redux/auth/authSlice'
+import '../styles/login.css'
 
 const ChangePassword = () => {
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
+  const [password, setPassword] = useState('')
+  const [password2, setPassword2] = useState('')
 
-  const params = useParams();
-  const token = params.token;
+  const params = useParams()
+  const token = params.token
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const { errorMessage, successMessage, isError, isSuccess, isLoading } =
-    useSelector((selector) => selector.auth);
+    useSelector((selector) => selector.auth)
 
   useEffect(() => {
     if (isError) {
-      toast.error(errorMessage);
+      toast.error(errorMessage)
     }
 
     if (isSuccess) {
-      toast.success(successMessage);
+      toast.success(successMessage)
     }
 
-    return () => dispatch(reset());
-  }, [isError, isSuccess, errorMessage, successMessage, dispatch]);
+    return () => dispatch(reset())
+  }, [isError, isSuccess, errorMessage, successMessage, dispatch])
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const data = {
       password,
       password2,
       token,
-    };
-    dispatch(changePassword(data));
-    setPassword("");
-    setPassword2("");
-  };
+    }
+    dispatch(changePassword(data))
+    setPassword('')
+    setPassword2('')
+  }
 
   if (isLoading) {
     return (
       <div
         style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         <ThreeDots color="#3a77ff" height={100} width={100} />
       </div>
-    );
+    )
   }
 
   return (
@@ -63,7 +63,7 @@ const ChangePassword = () => {
         <form
           className="contactform"
           onSubmit={handleSubmit}
-          style={{ width: "35%", margin: "auto" }}
+          style={{ width: '35%', margin: 'auto' }}
         >
           <h1 className="text-center">Please update your password</h1>
 
@@ -89,13 +89,13 @@ const ChangePassword = () => {
               />
             </div>
           </div>
-          <Button style={{ background: "#333", width: "100%" }} type="submit">
+          <Button style={{ background: '#333', width: '100%' }} type="submit">
             Update
           </Button>
         </form>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default ChangePassword;
+export default ChangePassword

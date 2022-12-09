@@ -1,61 +1,61 @@
-import React, { useEffect, useState } from "react";
-import { Button, Container } from "react-bootstrap";
-import toast from "react-hot-toast";
-import { ThreeDots } from "react-loader-spinner";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import GoogleLogin from "../components/GoogleLogin";
-import { login, reset } from "../redux/auth/authSlice";
-import "../styles/login.css";
+import React, { useEffect, useState } from 'react'
+import { Button, Container } from 'react-bootstrap'
+import toast from 'react-hot-toast'
+import { ThreeDots } from 'react-loader-spinner'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import GoogleLogin from '../components/GoogleLogin'
+import { login, reset } from '../redux/auth/authSlice'
+import '../styles/login.css'
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [password2, setPassword2] = useState('')
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { errorMessage, successMessage, isError, isSuccess, isLoading } =
-    useSelector((selector) => selector.auth);
+    useSelector((selector) => selector.auth)
 
   useEffect(() => {
     if (isError) {
-      toast.error(errorMessage);
+      toast.error(errorMessage)
     }
 
     if (isSuccess) {
-      toast.success(successMessage);
-      navigate("/");
+      toast.success(successMessage)
+      navigate('/')
     }
 
-    return () => dispatch(reset());
-  }, [isError, isSuccess, errorMessage, successMessage, dispatch, navigate]);
+    return () => dispatch(reset())
+  }, [isError, isSuccess, errorMessage, successMessage, dispatch, navigate])
 
-  useEffect(() => {}, [dispatch]);
+  useEffect(() => {}, [dispatch])
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const data = {
       email,
       password,
       password2,
-    };
-    dispatch(login(data));
-  };
+    }
+    dispatch(login(data))
+  }
 
   if (isLoading) {
     return (
       <div
         style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         <ThreeDots color="#3a77ff" height={100} width={100} />
       </div>
-    );
+    )
   }
 
   return (
@@ -64,7 +64,7 @@ const Login = () => {
         <form
           className="contactform"
           onSubmit={handleSubmit}
-          style={{ width: "50%", margin: "auto" }}
+          style={{ width: '50%', margin: 'auto' }}
         >
           <h1 className="text-center">SIGN IN</h1>
 
@@ -106,17 +106,17 @@ const Login = () => {
               />
             </div>
           </div>
-          <Button style={{ background: "#333", width: "100%" }} type="submit">
+          <Button style={{ background: '#333', width: '100%' }} type="submit">
             Sign In
           </Button>
 
-          <Link to="/find-account" style={{ color: "#333" }}>
+          <Link to="/find-account" style={{ color: '#333' }}>
             Forgot password?
           </Link>
         </form>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
