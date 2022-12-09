@@ -111,6 +111,26 @@ const ItemSidebar = ({ ad }) => {
           </p>
         )}
       </div>
+
+      {/* map */}
+      <div className="details_container">
+        <h1 className="heading" style={{ fontSize: "1.5rem" }}>
+          Posted in
+        </h1>
+
+        <span style={{ opacity: 0.8, fontSize: "14px" }}>{ad.location}</span>
+
+        <div
+          id="map"
+          style={{ width: "100%", height: "500px", marginTop: ".5rem" }}
+        ></div>
+      </div>
+
+      <div
+        style={{ fontWeight: "bold", marginTop: "8px", paddingLeft: "10px" }}
+      >
+        AD ID {ad._id}
+      </div>
     </div>
   );
 };
