@@ -1,5 +1,21 @@
-import logo from "./logo.svg";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import "./styles/footer.css";
+import PostAd from "./pages/PostAd";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import ActivateAccount from "./pages/ActivateAccount";
+import ChangePassword from "./pages/ChangePassword";
+import FindAccount from "./pages/FindAccount";
+import { Toaster } from "react-hot-toast";
+import { PublicRoute, ProtectedRoute } from "./utilities/ProtectedRoute";
+import Ad from "./pages/Item";
+import MyAds from "./pages/MyAds";
+import UpdateAd from "./pages/UpdateAd";
 
 function App() {
   return (
