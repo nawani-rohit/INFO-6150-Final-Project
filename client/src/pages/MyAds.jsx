@@ -5,6 +5,16 @@ import MyAd from "../components/MyAd";
 import { myads, reset } from "../redux/ads/adsSlice";
 
 const MyAds = () => {
+  const dispatch = useDispatch();
+  const { ads } = useSelector((select) => select.ads);
+
+  useEffect(() => {
+    dispatch(myads());
+  }, [dispatch]);
+
+  useEffect(() => {
+    return () => dispatch(reset());
+  }, [dispatch]);
   return (
     <Container>
       <h1 className="mt-5 mb-3">Your Ads</h1>
