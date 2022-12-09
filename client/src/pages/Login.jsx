@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 import { ThreeDots } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import GoogleLogin from "../components/GoogleLogin";
 import { login, reset } from "../redux/auth/authSlice";
 import LottieDisplay from "../components/LottieDisplay/LottieDisplay";
 import loginPerson from "../assets/lottie/loginPerson";
@@ -90,6 +89,7 @@ const Login = () => {
                 <Form.Label className="input_label">Password</Form.Label>
                 <Form.Control
                   className="input_container"
+                  type="password"
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -97,7 +97,7 @@ const Login = () => {
               </Form.Group>
               <Form.Group className="my-4" controlId="formBasicPassword">
                 <Form.Label className="input_label">
-                  Confrim Password
+                  Confirm Password
                 </Form.Label>
                 <Form.Control
                   className="input_container"
@@ -115,6 +115,11 @@ const Login = () => {
               </Button>
               <Link to="/find-account" style={{ color: "#333" }}>
                 Forgot password?
+              </Link>
+              <br></br>
+              New Customer? &nbsp;
+              <Link to="/register" style={{ color: "#333" }}>
+                Register Here
               </Link>
             </Form>
           </Col>
