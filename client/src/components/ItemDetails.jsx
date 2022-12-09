@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const ItemDetails = ({ ad }) => {
   return (
@@ -26,7 +26,7 @@ const ItemDetails = ({ ad }) => {
         <p className="description">{ad.description}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ItemDetails;
+export default ItemDetails

@@ -57,7 +57,7 @@ function Header() {
   }
 
   return (
-    <Navbar bg="light" expand="lg" style={{ height: '80px' }}>
+    <Navbar bg="light" expand="lg" style={{ MinHeight: '80px' }}>
       <Container>
         <NavLink to="/" className="navbar-brand">
           <svg

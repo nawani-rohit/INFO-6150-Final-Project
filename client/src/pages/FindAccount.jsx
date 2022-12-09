@@ -1,51 +1,51 @@
-import React, { useEffect, useState } from "react";
-import { Button, Container } from "react-bootstrap";
-import toast from "react-hot-toast";
-import { ThreeDots } from "react-loader-spinner";
-import { useDispatch, useSelector } from "react-redux";
-import { findAccount, reset } from "../redux/auth/authSlice";
-import "../styles/login.css";
+import React, { useEffect, useState } from 'react'
+import { Button, Container } from 'react-bootstrap'
+import toast from 'react-hot-toast'
+import { ThreeDots } from 'react-loader-spinner'
+import { useDispatch, useSelector } from 'react-redux'
+import { findAccount, reset } from '../redux/auth/authSlice'
+import '../styles/login.css'
 
 const ForgetPassword = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('')
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const { errorMessage, successMessage, isError, isSuccess, isLoading } =
-    useSelector((selector) => selector.auth);
+    useSelector((selector) => selector.auth)
 
   useEffect(() => {
     if (isError) {
-      toast.error(errorMessage);
+      toast.error(errorMessage)
     }
 
     if (isSuccess) {
-      toast.success(successMessage);
+      toast.success(successMessage)
     }
-    return () => dispatch(reset());
-  }, [isError, isSuccess, errorMessage, successMessage, dispatch]);
+    return () => dispatch(reset())
+  }, [isError, isSuccess, errorMessage, successMessage, dispatch])
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const data = {
       email,
-    };
-    dispatch(findAccount(data));
-    setEmail("");
-  };
+    }
+    dispatch(findAccount(data))
+    setEmail('')
+  }
 
   if (isLoading) {
     return (
       <div
         style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         <ThreeDots color="#3a77ff" height={100} width={100} />
       </div>
-    );
+    )
   }
 
   return (
@@ -53,7 +53,7 @@ const ForgetPassword = () => {
       <Container>
         <form
           className="contactform"
-          style={{ width: "50%", margin: "auto" }}
+          style={{ width: '50%', margin: 'auto' }}
           onSubmit={handleSubmit}
         >
           <h1 className="text-center">Please find your account</h1>
@@ -70,13 +70,13 @@ const ForgetPassword = () => {
             </div>
           </div>
 
-          <Button style={{ background: "#333", width: "100%" }} type="submit">
+          <Button style={{ background: '#333', width: '100%' }} type="submit">
             Find
           </Button>
         </form>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default ForgetPassword;
+export default ForgetPassword

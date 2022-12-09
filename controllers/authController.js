@@ -17,8 +17,8 @@ let transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: '', // generated ethereal user
-    pass: '', // generated ethereal password
+    user: 'zubairkamboh9010@gmail.com', // generated ethereal user
+    pass: 'bsssefjgpbwpaqld', // generated ethereal password
   },
   tls: {
     rejectUnauthorized: false,
@@ -140,8 +140,8 @@ const activateAccount = asynHandler(async (req, res) => {
   //   throw new Error('User already exists with that email')
   // }
 
-   // save user
-   const user = new AuthModel({
+  // save user
+  const user = new AuthModel({
     fullname,
     phoneno,
     email,
@@ -184,8 +184,8 @@ const signin = asynHandler(async (req, res) => {
     throw new Error('Minimum length should be 8 characters')
   }
 
-   // generate token
-   const token = jwt.sign({ email }, process.env.JWT_SECRET_KEY, {
+  // generate token
+  const token = jwt.sign({ email }, process.env.JWT_SECRET_KEY, {
     expiresIn: '1d',
   })
 
