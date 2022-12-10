@@ -15,18 +15,18 @@ const Footer = () => {
             </div>
           </Col>
           <Col md={3} xs={4}>
-            {/* <h5 className="about_us_heading">About Us</h5> */}
+            <h5 className="about_us_heading">About Us</h5>
             <ul className="navlinks">
               <li className="navlink">
-                <a href="#/">Terms & Conditions</a>
+                <a href="#/">Home</a>
               </li>
               <li className="navlink">
-                <a href="#/">Privacy Policy</a>
+                <a href="#/">Services</a>
               </li>
               <li className="navlink">
-                <a href="#/">Blog</a>
+                <a href="#/">Online Booking</a>
               </li>
-              {/* <li className="navlink">
+              <li className="navlink">
                 <a href="#/">About</a>
               </li>
               <li className="navlink">
@@ -34,7 +34,7 @@ const Footer = () => {
               </li>
               <li className="navlink">
                 <a href="#/">Contact</a>
-              </li> */}
+              </li>
             </ul>
           </Col>
           <Col md={3} xs={8}>
