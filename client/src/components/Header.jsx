@@ -226,7 +226,7 @@ function Header() {
             )}
 
             <NavLink
-              className="accountMenuDesktop nav-link ms-2 "
+              className="accountMenuDesktop mobile-hidden nav-link ms-2 "
               to="/post"
               onClick={handleSellBtnClick}
             >
