@@ -3,6 +3,7 @@ import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import "../styles/login.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { register, reset } from "../redux/auth/authSlice";
 import toast from "react-hot-toast";
 import { ThreeDots } from "react-loader-spinner";
@@ -17,6 +18,7 @@ const Login = () => {
   const [password2, setPassword2] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { errorMessage, successMessage, isError, isSuccess, isLoading } =
     useSelector((selector) => selector.auth);
 
@@ -27,6 +29,7 @@ const Login = () => {
 
     if (isSuccess) {
       toast.success(successMessage);
+      navigate("/signin");
     }
 
     return () => dispatch(reset());
@@ -43,6 +46,11 @@ const Login = () => {
     };
     console.log(data);
     dispatch(register(data));
+    setName("");
+    setEmail("");
+    setPassword("");
+    setPassword2("");
+    setPhone("");
   };
 
   if (isLoading) {
