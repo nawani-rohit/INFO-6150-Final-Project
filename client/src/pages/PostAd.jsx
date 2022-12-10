@@ -105,12 +105,8 @@ const PostAd = () => {
             POST YOUR AD
           </h3>
           <p className="description" style={{ color: "#fff" }}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse unde
-            amet nihil debitis ea corrupti exercitationem libero! Nam, inventore
-            illo!
-            <br />
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Praesentium, ullam?
+          Post your product listing to our marketplace and reach a wider audience of potential husky buyers
+            
           </p>
 
           <form

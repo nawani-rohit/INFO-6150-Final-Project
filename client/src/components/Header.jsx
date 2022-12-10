@@ -161,7 +161,7 @@ function Header() {
                       textDecoration: "none",
                     }}
                   >
-                    My Ads
+                    Seller Dashboard
                   </Link>
                   <MenuItem to="/" onClick={logout}>
                     Logout
@@ -208,7 +208,7 @@ function Header() {
                       textDecoration: "none",
                     }}
                   >
-                    My Ads
+                    Seller Dashboard
                   </Link>
                   <MenuItem to="/" onClick={logout}>
                     Logout

@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="footer_container">
       <Container>
         <Row>
-          <Col md={6} xs={12}>
+          <Col md={4} xs={12}>
             <div className="footer_logo_container">
             <img height="30"  src={require('../images/Logos/nu-moves-high-resolution-logo-transparent-background.png')} />
               <p className="footer_description">
@@ -14,47 +14,43 @@ const Footer = () => {
               </p>
             </div>
           </Col>
-          <Col md={3} xs={4}>
-            <h5 className="about_us_heading">About Us</h5>
+          <Col md={4} xs={12}>
+            <h5 className="about_us_heading">POLICY</h5>
             <ul className="navlinks">
               <li className="navlink">
-                <a href="#/">Home</a>
+                <a href="#/">Return Policy</a>
               </li>
               <li className="navlink">
-                <a href="#/">Services</a>
+                <a href="#/">Terms of Use </a>
               </li>
               <li className="navlink">
-                <a href="#/">Online Booking</a>
+                <a href="#/">Security</a>
               </li>
               <li className="navlink">
-                <a href="#/">About</a>
-              </li>
-              <li className="navlink">
-                <a href="#/">Blog</a>
-              </li>
-              <li className="navlink">
-                <a href="#/">Contact</a>
+                <a href="#/">Privacy</a>
               </li>
             </ul>
           </Col>
-          <Col md={3} xs={8}>
-            <h5 className="about_us_heading">About Us</h5>
+          <Col md={4} xs={12}>
+            <h5 className="about_us_heading">CONTACT US</h5>
             <ul className="navlinks">
+            <li className="nav_li">
+                <p className="navlink">numoves@northeastern.edu</p>
+              </li>
               <li className="nav_li">
-                <p className="navlink">+880-2-9898796</p>
+                <p className="navlink"> +1 258-723-5656</p>
               </li>
               <li className="nav_li">
                 <p className="navlink">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.
+                67 huntington st cortland, Boston 
                 </p>
               </li>
-              <li className="nav_li">
-                <p className="navlink">company@gmail.com</p>
-              </li>
+              
             </ul>
           </Col>
         </Row>
+        <hr />
+        <p className='text-center'>2022 © NU MOVES - Made for NU Huskies</p>
       </Container>
     </div>
   )
