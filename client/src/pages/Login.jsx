@@ -38,7 +38,6 @@ const Login = () => {
     const data = {
       email,
       password,
-      password2,
     };
     dispatch(login(data));
   };
