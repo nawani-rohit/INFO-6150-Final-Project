@@ -47,7 +47,7 @@ const MyAd = ({ ad }) => {
           justifyContent: 'space-between',
         }}
       >
-        <span style={{ fontSize: '14px' }}>
+        <span className='mobile-hidden' style={{ fontSize: '14px' }}>
           From <span style={{ fontWeight: 'bold' }}>{date}</span>
         </span>
 
@@ -85,7 +85,7 @@ const MyAd = ({ ad }) => {
             alignItems: 'center',
           }}
         >
-          <span style={{ fontSize: '14px' }}>Rs {price}</span>
+          <span style={{ fontSize: '14px' }}>$ {price}</span>
           <span
             style={{
               background: '#23e5db',
@@ -96,7 +96,7 @@ const MyAd = ({ ad }) => {
           >
             Active
           </span>
-          <span style={{ fontSize: '14px' }}>This ad is currently live</span>
+          <span className='mobile-hidden' style={{ fontSize: '14px' }}>This ad is currently live</span>
 
           <IconButton onClick={handleClick}>
             <BsThreeDots />
