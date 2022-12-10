@@ -23,24 +23,35 @@
 
 ## Home Screen
 
-![](https://github.com/nawani-rohit/INFO-6150-Final-Project/screen images/HomeScreen.png)
+Buyers can view listings posted by sellers. Seller can login and register through this page.
+
+![](https://github.com/nawani-rohit/INFO-6150-Final-Project/blob/main/screen%20images/HomeScreen.png)
 
 ## Login Screen
+On clicking the activation link, this screen appears where the seller can activate his/her account.
 
-![](https://github.com/nawani-rohit/INFO-6150-Final-Project/screen images/LoginScreen.jpg)
+![](https://github.com/nawani-rohit/INFO-6150-Final-Project/blob/main/screen%20images/LoginScreen.jpg)
 
 ## PostAd Screen
 
-![](https://github.com/nawani-rohit/INFO-6150-Final-Project/screen images/PostAdScreen.jpg)
+This screen displays Ad listing form where seller can post the ad by inputting relevant details regarding the product.
+
+![](https://github.com/nawani-rohit/INFO-6150-Final-Project/blob/main/screen%20images/PostAdScreen.jpg)
 
 ## ProductAd Screen
 
-![](https://github.com/nawani-rohit/INFO-6150-Final-Project/screen images/ProductAd.jpg)
+This screen displays Ad listing posted by the seller. It contains all the details along with seller description. Product images are displayed as a slideshow.
+
+![](https://github.com/nawani-rohit/INFO-6150-Final-Project/blob/main/screen%20images/ProductAd.jpg)
 
 ## SignUp Screen
 
-![](https://github.com/nawani-rohit/INFO-6150-Final-Project/screen images/SignUp.png)
+This screen displays seller sign up form with proper validations. Only verified Northeastern students can sign up
 
-## User Dashboard Screen
+![](https://github.com/nawani-rohit/INFO-6150-Final-Project/blob/main/screen%20images/SignUp.png)
 
-![](https://github.com/nawani-rohit/INFO-6150-Final-Project/screen images/UserDashboard.jpg)
+## Seller Dashboard Screen
+
+Seller dashboard screen display's all the ad listings posted by the seller along with the details and status. Any listing can be deleted from the dashboard.
+
+![](https://github.com/nawani-rohit/INFO-6150-Final-Project/blob/main/screen%20images/UserDashboard.jpg)
