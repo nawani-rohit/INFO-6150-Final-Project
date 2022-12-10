@@ -12,7 +12,6 @@ import "../styles/login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,7 +38,6 @@ const Login = () => {
     const data = {
       email,
       password,
-      password2,
     };
     dispatch(login(data));
   };
@@ -95,18 +93,6 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group className="my-4" controlId="formBasicPassword">
-                <Form.Label className="input_label">
-                  Confirm Password
-                </Form.Label>
-                <Form.Control
-                  className="input_container"
-                  type="password"
-                  placeholder="Confirm your password"
-                  value={password2}
-                  onChange={(e) => setPassword2(e.target.value)}
-                />
-              </Form.Group>
               <Button
                 style={{ background: "#333", width: "100%" }}
                 type="submit"
@@ -118,7 +104,7 @@ const Login = () => {
               </Link>
               <br></br>
               New Customer? &nbsp;
-              <Link to="/register" style={{ color: "#333" }}>
+              <Link to="/signup" style={{ color: "#333" }}>
                 Register Here
               </Link>
             </Form>
