@@ -38,7 +38,7 @@ const MyAd = ({ ad }) => {
   }
 
   return (
-    <Card style={{ cursor: 'pointer' }}>
+    <Card style={{ cursor: 'pointer', marginBottom:'15px' }}>
       <div
         style={{
           padding: '2rem 1rem',

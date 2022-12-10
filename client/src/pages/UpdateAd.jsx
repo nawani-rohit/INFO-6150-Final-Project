@@ -114,11 +114,7 @@ const UpdateAd = () => {
             UPDATE YOUR AD
           </h3>
           <p className="description" style={{ color: "#fff" }}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi natus
-            veniam eveniet id, distinctio ipsa rerum veritatis porro ea soluta.
-            <br />
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda,
-            ratione.
+          Post your product listing to our marketplace and reach a wider audience of potential husky buyers
           </p>
 
           <form
