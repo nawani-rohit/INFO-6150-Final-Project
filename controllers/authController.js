@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 const authModel = require("../models/authModel");
 const { OAuth2Client } = require("google-auth-library");
+const bcrypt = require('bcryptjs');
 
 const client = new OAuth2Client({
   clientId:
@@ -12,6 +13,7 @@ const client = new OAuth2Client({
 
 // nodemailer
 const nodemailer = require("nodemailer");
+const { hasBrowserCrypto } = require("google-auth-library/build/src/crypto/crypto");
 let transporter = nodemailer.createTransport({
   host: "smtp.mail.yahoo.com",
   port: 465,
@@ -324,6 +326,9 @@ const changePassword = asynHandler(async (req, res) => {
   }
 
   const { email } = tokenVerified;
+
+  const salt = await bcrypt.genSalt(10);
+  password = await bcrypt.hash(password, salt);
 
   // check if user alread exists and update
   const findUser = await AuthModel.findOne({ email });
