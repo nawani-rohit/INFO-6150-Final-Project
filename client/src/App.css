@@ -122,6 +122,9 @@
     margin-left: 200px!important;
     right: 10px!important;
   }
+  .mobile-left{
+    margin-left: -50px!important;
+  }
 }
 
 
