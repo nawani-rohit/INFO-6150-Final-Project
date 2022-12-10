@@ -68,7 +68,7 @@
 }
 
 .contactform {
-  background-color: var(--white);
+  background-color: white!important;
   padding: 4rem;
   margin: 2rem 5rem;
   box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.03);
