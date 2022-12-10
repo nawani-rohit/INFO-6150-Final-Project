@@ -10,24 +10,23 @@ const Footer = () => {
             <div className="footer_logo_container">
             <img height="30"  src={require('../images/Logos/nu-moves-high-resolution-logo-transparent-background.png')} />
               <p className="footer_description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
+                All Your Household Needs Under One Roof
               </p>
             </div>
           </Col>
           <Col md={3} xs={4}>
-            <h5 className="about_us_heading">About Us</h5>
+            {/* <h5 className="about_us_heading">About Us</h5> */}
             <ul className="navlinks">
               <li className="navlink">
-                <a href="#/">Home</a>
+                <a href="#/">Terms & Conditions</a>
               </li>
               <li className="navlink">
-                <a href="#/">Services</a>
+                <a href="#/">Privacy Policy</a>
               </li>
               <li className="navlink">
-                <a href="#/">Online Booking</a>
+                <a href="#/">Blog</a>
               </li>
-              <li className="navlink">
+              {/* <li className="navlink">
                 <a href="#/">About</a>
               </li>
               <li className="navlink">
@@ -35,7 +34,7 @@ const Footer = () => {
               </li>
               <li className="navlink">
                 <a href="#/">Contact</a>
-              </li>
+              </li> */}
             </ul>
           </Col>
           <Col md={3} xs={8}>
