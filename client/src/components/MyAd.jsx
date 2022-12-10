@@ -60,6 +60,7 @@ const MyAd = ({ ad }) => {
           }}
         >
           <img
+            className='mobile-left'
             src={`./uploads/${images[0]}`}
             alt="profile"
             width={50}
@@ -87,6 +88,7 @@ const MyAd = ({ ad }) => {
         >
           <span style={{ fontSize: '14px' }}>$ {price}</span>
           <span
+            className='mobile-hidden'
             style={{
               background: '#23e5db',
               color: '#002f34',
@@ -116,7 +118,7 @@ const MyAd = ({ ad }) => {
               width: '10%',
               padding: '.5rem',
               left: 'auto !important',
-              right: '300px',
+              right: '30px',
             },
           }}
         >
