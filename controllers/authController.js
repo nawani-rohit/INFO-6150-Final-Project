@@ -188,14 +188,30 @@ const activateAccount = asynHandler(async (req, res) => {
 const signin = asynHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  if (!email || !password) {
-    res.status(400);
-    throw new Error("Please include all fields");
+  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
+  let regexEmpty = /^$/;
+  let notEmpty = false;
+
+  if (email.trim().match(regexEmpty) || password.trim().match(regexEmpty)) {
+    res.status(400).send({
+      message: "Please make sure to enter valid Email and Password",
+    });
+  } else {
+    notEmpty = true;
   }
-  // check passwords length
-  if (password.length < 8) {
-    res.status(400);
-    throw new Error("Minimum length should be 8 characters");
+
+  if (notEmpty) {
+    if (!email.trim().match(regexEmail)) {
+      res.status(400).send({
+        message: "Email address is not valid",
+      });
+    } else if (!password.trim().match(regexPassword)) {
+      res.status(400).send({
+        message:
+          "Passwords are 8-16 characters with uppercase letters, lowercase letters and at least one number",
+      });
+    }
   }
 
   // generate token
@@ -207,14 +223,16 @@ const signin = asynHandler(async (req, res) => {
 
   // check if email do not exists
   if (!user) {
-    res.status(400);
-    throw new Error("Email does'nt exist! Please sign up first");
+    res.status(400).send({
+      message: "Email doesn't exists. Please sign in first",
+    });
   }
 
   // if passwords do not match
   if (user.password !== password) {
-    res.status(400);
-    throw new Error("Incorrect password!");
+    res.status(400).send({
+      message: "Entered Password is incorrect",
+    });
   }
 
   // sign in user
@@ -254,7 +272,7 @@ const forgotPassword = asynHandler(async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: "noreply@yahoo.com",
+      from: "trymerohit@yahoo.com",
       to: email,
       subject: "Password Change Link",
       html: `
