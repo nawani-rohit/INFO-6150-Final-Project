@@ -48,7 +48,7 @@ export const InnerCard = ({ ad }) => {
             </span>
           </Card.Title>
           <Card.Text style={{ fontSize: '25px', fontWeight: 'bold' }}>
-            Rs {ad.price}
+            $ {ad.price}
           </Card.Text>
           <Card.Text style={{ fontSize: '13px' }}>
             {ad.location} - {time}
