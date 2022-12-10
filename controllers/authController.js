@@ -39,7 +39,7 @@ const signup = asynHandler(async (req, res) => {
   // console.log(fullname);
 
   let regexName = /^([\w]{3,})+\s+([\w\s]{3,})+$/;
-  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let regexEmail = /^[a-z0-9]+@northeastern.edu+$/;
   let regexPhoneNo =
     /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
   let regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
@@ -192,7 +192,7 @@ const activateAccount = asynHandler(async (req, res) => {
 const signin = asynHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let regexEmail = /^[a-z0-9]+@northeastern.edu+$/;
   let regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
   let regexEmpty = /^$/;
   let notEmpty = false;
