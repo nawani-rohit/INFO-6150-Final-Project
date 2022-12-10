@@ -28,6 +28,10 @@
   color: #61dafb;
 }
 
+.accountMenuMobile{
+  display: none;
+}
+
 /* .categories_navlinks{
   overflow-x: scroll;
 } */
@@ -39,6 +43,13 @@
   .contactform{
     width: 100%!important;
   }
+  .locationFilterSearch{
+    width: 100%!important;
+    margin-top: 20px;
+  }
+  .searchField{
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: 768px){
@@ -47,6 +58,13 @@
   }
   .contactform{
     width: 100%!important;
+  }
+  .locationFilterSearch{
+    width: 100%!important;
+    margin-top: 20px;
+  }
+  .searchField{
+    margin-top: 20px;
   }
 }
 
@@ -57,6 +75,24 @@
   .contactform{
     width: 100%!important;
   }
+  .locationFilterSearch{
+    width: 100%!important;
+    margin-top: 20px;
+  }
+  .searchField{
+    margin-top: 20px;
+  }
+  #basic-menu{
+    width:100vw!important;
+  }
+  .accountMenuDesktop{
+    display: none;
+  }
+  .accountMenuMobile{
+    display: block;
+    margin-top: 20px;
+  }
+  
 }
 
 
