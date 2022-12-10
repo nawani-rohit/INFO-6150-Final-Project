@@ -69,7 +69,7 @@ const signup = asynHandler(async (req, res) => {
       });
     } else if (!email.trim().match(regexEmail)) {
       res.status(400).send({
-        message: "Email address is not valid",
+        message: "Please enter valid email id ex. @northeastern.edu",
       });
     } else if (!phoneno.trim().match(regexPhoneNo)) {
       res.status(400).send({
@@ -208,7 +208,7 @@ const signin = asynHandler(async (req, res) => {
   if (notEmpty) {
     if (!email.trim().match(regexEmail)) {
       res.status(400).send({
-        message: "Email address is not valid",
+        message: "Please enter valid email id ex. @northeastern.edu",
       });
     } else if (!password.trim().match(regexPassword)) {
       res.status(400).send({
