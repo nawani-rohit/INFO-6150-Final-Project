@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 const authModel = require("../models/authModel");
 const { OAuth2Client } = require("google-auth-library");
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 
 const client = new OAuth2Client({
   clientId:
@@ -13,7 +13,9 @@ const client = new OAuth2Client({
 
 // nodemailer
 const nodemailer = require("nodemailer");
-const { hasBrowserCrypto } = require("google-auth-library/build/src/crypto/crypto");
+const {
+  hasBrowserCrypto,
+} = require("google-auth-library/build/src/crypto/crypto");
 let transporter = nodemailer.createTransport({
   host: "smtp.mail.yahoo.com",
   port: 465,
@@ -230,25 +232,30 @@ const signin = asynHandler(async (req, res) => {
     });
   }
 
+  if (user && (await user.matchPassword(password))) {
+    // sign in user
+    res.json({
+      successMsg: "Sign in successfully!",
+      token,
+      user: {
+        _id: user._id,
+        email: user.email,
+        phoneno: user.phoneno,
+        fullname: user.fullname,
+        ads: user.ads,
+      },
+    });
+  } else {
+    res.status(401);
+    throw new Error("Invalid Email or Password");
+  }
+
   // if passwords do not match
   if (user.password !== password) {
     res.status(400).send({
       message: "Entered Password is incorrect",
     });
   }
-
-  // sign in user
-  res.json({
-    successMsg: "Sign in successfully!",
-    token,
-    user: {
-      _id: user._id,
-      email: user.email,
-      phoneno: user.phoneno,
-      fullname: user.fullname,
-      ads: user.ads,
-    },
-  });
 });
 
 // route      /api/auth/forget
