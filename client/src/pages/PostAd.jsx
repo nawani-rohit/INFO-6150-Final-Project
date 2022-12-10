@@ -105,7 +105,7 @@ const PostAd = () => {
             POST YOUR AD
           </h3>
           <p className="description" style={{ color: "#fff" }}>
-          Post your product listing to our marketplace and reach a wider audience of potential husky buyers
+          Post your product listing to our marketplace and reach a wider audience of potential buyers
             
           </p>
 
