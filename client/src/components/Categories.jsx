@@ -20,31 +20,31 @@ const Categories = () => {
   return (
     <ul className="categories_navlinks">
       <li className="navlink" onClick={() => handleCategories('Mobile Phones')}>
-        Mobile Phones
+        Appliances
       </li>
       <li className="navlink" onClick={() => handleCategories('Cars')}>
-        Cars
+        Furniture
       </li>
       <li className="navlink" onClick={() => handleCategories('Motorcycles')}>
-        Motorcycles
+        Cooking Utensils
       </li>
       <li className="navlink" onClick={() => handleCategories('Houses')}>
-        Houses
+        Cleaning Supplies
       </li>
       <li className="navlink" onClick={() => handleCategories('Tv')}>
-        Tv
+        Electronic Equipments
       </li>
       <li className="navlink" onClick={() => handleCategories('Video-Audio')}>
-        Video-Audio
+        Crockery
       </li>
       <li className="navlink" onClick={() => handleCategories('Tablets')}>
-        Tablets
+        Furnishing
       </li>
       <li className="navlink" onClick={() => handleCategories('Laptops')}>
-        Laptops
+        Kitchenware
       </li>
       <li className="navlink" onClick={() => handleCategories('Land & Plots')}>
-        Land & Plots
+        Cleaning Equipments
       </li>
       <li className="navlink" onClick={() => handleCategories('Others')}>
         Others

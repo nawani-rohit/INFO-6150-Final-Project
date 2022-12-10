@@ -10,8 +10,7 @@ const Footer = () => {
             <div className="footer_logo_container">
             <img height="30"  src={require('../images/Logos/nu-moves-high-resolution-logo-transparent-background.png')} />
               <p className="footer_description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
+                All Your Household Needs Under One Roof
               </p>
             </div>
           </Col>
