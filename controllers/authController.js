@@ -34,27 +34,63 @@ const signup = asynHandler(async (req, res) => {
   // console.log("In backend");
   // console.log(fullname);
 
-  if (!fullname || !phoneno || !email || !password || !password2) {
-    res.status(400);
-    throw new Error("Please include all fields");
+  let regexName = /^([\w]{3,})+\s+([\w\s]{3,})+$/;
+  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let regexPhoneNo =
+    /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+  let regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
+  let regexEmpty = /^$/;
+  let notEmpty = false;
+
+  if (
+    fullname.trim().match(regexEmpty) ||
+    email.trim().match(regexEmpty) ||
+    phoneno.trim().match(regexEmpty) ||
+    password.trim().match(regexEmpty) ||
+    password2.trim().match(regexEmpty)
+  ) {
+    res.status(400).send({
+      message:
+        "Please make sure to enter valid Full Name, Email, Phone Number, Password and Confirm Password",
+    });
+  } else {
+    notEmpty = true;
   }
-  console.log("fields passed");
-  // check both passwords
-  if (password !== password2) {
-    res.status(400);
-    throw new Error("Passwords do not match");
+
+  if (notEmpty) {
+    if (!fullname.trim().match(regexName)) {
+      res.status(400).send({
+        message:
+          "Full Name should have atleast 3 characters without any special characters",
+      });
+    } else if (!email.trim().match(regexEmail)) {
+      res.status(400).send({
+        message: "Email address is not valid",
+      });
+    } else if (!phoneno.trim().match(regexPhoneNo)) {
+      res.status(400).send({
+        message: "Phone Number is not valid",
+      });
+    } else if (!password.trim().match(regexPassword)) {
+      res.status(400).send({
+        message:
+          "Passwords are 8-16 characters with uppercase letters, lowercase letters and at least one number",
+      });
+    } else if (password !== password2) {
+      res.status(400).send({
+        message: "Passwords do not match",
+      });
+    }
   }
-  console.log("passwords passed");
 
   const emailExist = await AuthModel.findOne({ email });
 
   // check if email already exists
   if (emailExist) {
-    res.status(400);
-    throw new Error("Email already exists");
+    res.status(400).send({
+      message: "User already exists",
+    });
   }
-
-  console.log("Emails passed");
 
   // setup nodemailer
   const token = jwt.sign(
@@ -65,47 +101,7 @@ const signup = asynHandler(async (req, res) => {
     }
   );
   console.log(token);
-  // // save user
-  // const user = new AuthModel({
-  //   fullname,
-  //   phoneno,
-  //   email,
-  //   password,
-  // });
 
-  // await user.save();
-
-  // if (!user) {
-  //   throw new Error("Something went wrong");
-  // }
-
-  // // generate new token
-  // const newToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
-  //   expiresIn: "1d",
-  // });
-
-  // res
-  //   .status(201)
-  //   .json({ successMsg: "Registered Successfully!", token: newToken });
-  // remove this after testing
-  // res.json({
-  //   token,
-  // })
-  // const mailOptions = {
-  //   from: "trymerohit@yahoo.com",
-  //   to: "rnawani98@gmail.com",
-  //   subject: "Test Email",
-  //   text: "This is a test email sent using Yahoo SMTP server.",
-  // };
-
-  // transporter.sendMail(mailOptions, (error, info) => {
-  //   if (error) {
-  //     console.log(error);
-  //   } else {
-  //     console.log("Email sent: " + info.response);
-  //   }
-  // });
-  // const url = ;
   try {
     await transporter.sendMail({
       from: "trymerohit@yahoo.com",
@@ -190,20 +186,14 @@ const activateAccount = asynHandler(async (req, res) => {
 
 // SIGNIN
 const signin = asynHandler(async (req, res) => {
-  const { email, password, password2 } = req.body;
+  const { email, password } = req.body;
 
-  if (!email || !password || !password2) {
+  if (!email || !password) {
     res.status(400);
     throw new Error("Please include all fields");
   }
-
-  // check both passwords
-  if (password !== password2) {
-    res.status(400);
-    throw new Error("Passwords do not match");
-  }
   // check passwords length
-  if (password.length < 8 || password2.length < 8) {
+  if (password.length < 8) {
     res.status(400);
     throw new Error("Minimum length should be 8 characters");
   }
