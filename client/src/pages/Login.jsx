@@ -99,6 +99,9 @@ const Login = () => {
               >
                 Sign In
               </Button>
+              <Link to="/find-account" style={{ color: "#333" }}>
+                Forgot password?
+              </Link>
               <br></br>
               New Customer? &nbsp;
               <Link to="/signup" style={{ color: "#333" }}>
