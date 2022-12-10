@@ -304,21 +304,40 @@ const forgotPassword = asynHandler(async (req, res) => {
 // method     put
 const changePassword = asynHandler(async (req, res) => {
   const { password, password2 } = req.body;
-  if (!password || !password2) {
-    res.status(400);
-    throw new Error("Please include all fields");
+
+  let regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
+  let regexEmpty = /^$/;
+  let notEmpty = false;
+
+  if (password.trim().match(regexEmpty) || password.trim().match(regexEmpty)) {
+    res.status(400).send({
+      message: "Please make sure to enter both password fields",
+    });
+  } else {
+    notEmpty = true;
   }
+
+  if (notEmpty) {
+    if (!password.trim().match(regexPassword)) {
+      res.status(400).send({
+        message:
+          "Passwords are 8-16 characters with uppercase letters, lowercase letters and at least one number",
+      });
+    } else if (!password2.trim().match(regexPassword)) {
+      res.status(400).send({
+        message:
+          "Passwords are 8-16 characters with uppercase letters, lowercase letters and at least one number",
+      });
+    }
+  }
+  // console.log("match passwords not empty");
 
   // check both passwords
   if (password !== password2) {
     res.status(400);
     throw new Error("Passwords do not match");
   }
-  // check passwords length
-  if (password.length < 8 || password2.length < 8) {
-    res.status(400);
-    throw new Error("Minimum length should be 8 characters");
-  }
+  // console.log("match passwords done");
 
   // get token
   const token = req.headers.authorization
@@ -331,6 +350,8 @@ const changePassword = asynHandler(async (req, res) => {
     throw new Error("Not authorized! no token");
   }
 
+  // console.log(token);
+
   // token exists
   const tokenVerified = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
@@ -340,18 +361,21 @@ const changePassword = asynHandler(async (req, res) => {
     throw new Error("Invalid or expired token");
   }
 
+  // console.log("before salting");
+
   const { email } = tokenVerified;
 
   const salt = await bcrypt.genSalt(10);
-  password = await bcrypt.hash(password, salt);
+  console.log(salt);
+  const uppassword = await bcrypt.hash(password, salt);
+
+  // console.log("Updated password", uppassword);
 
   // check if user alread exists and update
   const findUser = await AuthModel.findOne({ email });
-  const updatedUser = await AuthModel.updateOne(
+  const updatedUser = await AuthModel.findOneAndUpdate(
     { _id: findUser._id },
-    {
-      password,
-    }
+    { $set: { password: uppassword } }
   );
 
   if (!updatedUser) {
